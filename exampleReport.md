@@ -50,6 +50,13 @@ You can also embed plots, for example:
 
 ```r
 require(ggplot2)
+```
+
+```
+## Loading required package: ggplot2
+```
+
+```r
 qplot(data = srcdata, x = mpg, y = lp100km, geom = "point")
 ```
 
