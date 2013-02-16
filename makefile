@@ -6,7 +6,7 @@ R_HOME :=       $(shell R RHOME)
 all: exampleReport.html ./data/processeddata.csv ./data/dataimage
 
 ##Build Report from processed data and reprots/tables
-exampleReport.html: ./data/processeddata.csv ./data/dataimage ./R/5_Report.R
+exampleReport.html: ./data/processeddata.csv ./data/dataimage ./R/5_Report.R ./R/exampleReport.Rmd
 	Rscript ./R/5_Report.R
 
 #built reports/tables from processeddata.csv
