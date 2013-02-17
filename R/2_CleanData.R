@@ -4,10 +4,13 @@
 
 require(plyr)
 
+#PseduoCode to determine the month to store data in
+month<-"Jan"
+
 #read the data in, either from file or image
-srcdata<-read.csv(file="./data/srcdata.csv")
+srcdata<-read.csv(file=paste("./data/",month,"_SRC.csv", sep=""))
 
 srcdata<-subset(srcdata, mpg<32)
 
 #write the clean data out
-write.csv(srcdata, file="./data/cleandata.csv")
+write.csv(srcdata, file=paste("./data/",month,"_CLN.csv", sep=""))

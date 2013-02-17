@@ -1,7 +1,7 @@
 Example Data Processing Report
 ========================================================
 
-This is an R Markdown document built on `2013-02-16 07:21:18`. Markdown is a simple formatting syntax for authoring web pages (click the **MD** toolbar button for help on Markdown).
+This is an R Markdown document built on `2013-02-17 20:02:17`. Markdown is a simple formatting syntax for authoring web pages (click the **MD** toolbar button for help on Markdown).
 
 When you click the **Knit HTML** button a web page will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
@@ -50,6 +50,13 @@ You can also embed plots, for example:
 
 ```r
 require(ggplot2)
+```
+
+```
+## Loading required package: ggplot2
+```
+
+```r
 qplot(data = srcdata, x = mpg, y = lp100km, geom = "point")
 ```
 

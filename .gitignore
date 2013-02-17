@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 .Rproj.user
+.Rproj
 .Rhistory
 .RData
 =======
@@ -9,3 +10,4 @@
 *-Ex.R
 >>>>>>> 2dd01beadccab88779c47ef46bf26571636b98ae
 makefile~
+AnalysisWorkflowSkeleton.Rproj
