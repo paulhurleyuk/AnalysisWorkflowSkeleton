@@ -5,7 +5,9 @@
 require(knitr)
 
 #PseduoCode to determine the month to store data in
-month<-"Jan"
+month<-commandArgs(trailingOnly = TRUE)
+
+if(length(month)<1){month="Jan"}
 
 # load data
 load(file=paste("./data/",month,"_RPTS", sep=""))

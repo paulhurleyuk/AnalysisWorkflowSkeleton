@@ -3,7 +3,9 @@
 # Process the data to do anything extra thats required
 
 #PseduoCode to determine the month to store data in
-month<-"Jan"
+month<-commandArgs(trailingOnly = TRUE)
+
+if(length(month)<1){month="Jan"}
 
 # Load data
 srcdata<-read.csv(file=paste("./data/",month,"_CLN.csv", sep=""))

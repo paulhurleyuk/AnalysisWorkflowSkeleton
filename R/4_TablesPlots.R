@@ -6,7 +6,9 @@ require(plyr)
 require(ggplot2)
 
 #PseduoCode to determine the month to store data in
-month<-"Jan"
+month<-commandArgs(trailingOnly = TRUE)
+
+if(length(month)<1){month="Jan"}
 
 #read data
 srcdata<-read.csv(file=paste("./data/",month,"_PROC.csv", sep=""))
