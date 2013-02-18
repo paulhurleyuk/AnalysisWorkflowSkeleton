@@ -5,13 +5,16 @@
 require(plyr)
 require(ggplot2)
 
-#PseduoCode to determine the month to store data in
-month<-commandArgs(trailingOnly = TRUE)
+source(file=normalizePath("./R/utils.R"))
 
-if(length(month)<1){month="Jan"}
+#If the report period has been specified (i.e 2013Jan)
+#then use it, otherwise, assume the current year/month
+ReportPeriod<-commandArgs(trailingOnly = TRUE)
+if(length(ReportPeriod)<1){ReportPeriod<-format(reportMonth(Sys.Date()), format="%Y%b")}
+
 
 #read data
-srcdata<-read.csv(file=paste("./data/",month,"_PROC.csv", sep=""))
+srcdata<-read.csv(file=paste("./data/",ReportPeriod,"_PROC.csv", sep=""))
 
 summarytable<-ddply(.data=srcdata, .(cyl, gear), nrow)
 
@@ -19,4 +22,4 @@ summaryplot<-ggplot(data=srcdata, aes(x=cyl, y=mpg))+
     geom_point(aes(colour=hp))
 
 #write data out, here to an image
-save(summarytable, summaryplot, file=paste("./data/",month,"_RPTS", sep=""))
+save(summarytable, summaryplot, file=paste("./data/",ReportPeriod,"_RPTS", sep=""))

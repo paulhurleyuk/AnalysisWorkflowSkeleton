@@ -4,7 +4,7 @@ R_HOME :=       $(shell R RHOME)
 
 # Assign a data identifier. 
 #IRL could use R to assign current if not specified as an arg to make
-month :=     Jan
+month :=     $(shell Rscript './R/reportperiod.R')
 
 ##To Build everything, list everything
 all: exampleReport.html ./data/$(month)_PROC.csv ./data/$(month)_RPTS
@@ -27,7 +27,11 @@ exampleReport.html: ./data/$(month)_PROC.csv ./data/$(month)_RPTS ./R/5_Report.R
 
 ##build source data
 ./data/$(month)_SRC.csv: ./R/1_GetData.R
+	echo $(month)
 	Rscript ./R/1_GetData.R $(month)
+
+test2: 
+	echo $(month)
 
 ##clean everything up
 clean: 

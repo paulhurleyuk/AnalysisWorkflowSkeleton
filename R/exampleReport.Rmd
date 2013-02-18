@@ -1,4 +1,4 @@
-Example Data Processing Report
+Example Data Processing Report for `r ReportPeriod`
 ========================================================
 
 This is an R Markdown document built on `r print(format(Sys.time(), format="%Y-%m-%d %H:%M:%S"))`. Markdown is a simple formatting syntax for authoring web pages (click the **MD** toolbar button for help on Markdown).

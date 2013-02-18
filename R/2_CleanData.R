@@ -4,15 +4,18 @@
 
 require(plyr)
 
-#PseduoCode to determine the month to store data in
-month<-commandArgs(trailingOnly = TRUE)
+source(file=normalizePath("./R/utils.R"))
 
-if(length(month)<1){month="Jan"}
+#If the report period has been specified (i.e 2013Jan)
+#then use it, otherwise, assume the current year/month
+ReportPeriod<-commandArgs(trailingOnly = TRUE)
+if(length(ReportPeriod)<1){ReportPeriod<-format(reportMonth(Sys.Date()), format="%Y%b")}
+
 
 #read the data in, either from file or image
-srcdata<-read.csv(file=paste("./data/",month,"_SRC.csv", sep=""))
+srcdata<-read.csv(file=paste("./data/",ReportPeriod,"_SRC.csv", sep=""))
 
 srcdata<-subset(srcdata, mpg<32)
 
 #write the clean data out
-write.csv(srcdata, file=paste("./data/",month,"_CLN.csv", sep=""))
+write.csv(srcdata, file=paste("./data/",ReportPeriod,"_CLN.csv", sep=""))

@@ -3,15 +3,16 @@
 # Create a Report
 
 require(knitr)
+source(file=normalizePath("./R/utils.R"))
 
-#PseduoCode to determine the month to store data in
-month<-commandArgs(trailingOnly = TRUE)
-
-if(length(month)<1){month="Jan"}
+#If the report period has been specified (i.e 2013Jan)
+#then use it, otherwise, assume the current year/month
+ReportPeriod<-commandArgs(trailingOnly = TRUE)
+if(length(ReportPeriod)<1){ReportPeriod<-format(reportMonth(Sys.Date()), format="%Y%b")}
 
 # load data
-load(file=paste("./data/",month,"_RPTS", sep=""))
-srcdata<-read.csv(paste("./data/",month,"_PROC.csv", sep=""))
+load(file=paste("./data/",ReportPeriod,"_RPTS", sep=""))
+srcdata<-read.csv(paste("./data/",ReportPeriod,"_PROC.csv", sep=""))
 
 #produce reports
 knitr::knit2html("./R/exampleReport.Rmd")
