@@ -13,9 +13,11 @@ if(length(ReportPeriod)<1){ReportPeriod<-format(reportMonth(Sys.Date()), format=
 
 
 #read the data in, either from file or image
-srcdata<-read.csv(file=paste("./data/",ReportPeriod,"_SRC.csv", sep=""))
+srcdata<-read.csv(file=paste("./data/",ReportPeriod,"_SRC.csv", sep=""), stringsAsFactors=FALSE)
 
 srcdata<-subset(srcdata, mpg<32)
 
 #write the clean data out
-write.csv(srcdata, file=paste("./data/",ReportPeriod,"_CLN.csv", sep=""))
+write.csv(srcdata, 
+          file=normalizePath(paste("./data/",ReportPeriod,"_CLN.csv", sep=""),mustWork=FALSE), 
+          row.names=FALSE)

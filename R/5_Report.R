@@ -12,7 +12,8 @@ if(length(ReportPeriod)<1){ReportPeriod<-format(reportMonth(Sys.Date()), format=
 
 # load data
 load(file=paste("./data/",ReportPeriod,"_RPTS", sep=""))
-srcdata<-read.csv(paste("./data/",ReportPeriod,"_PROC.csv", sep=""))
+srcdata<-read.csv(paste("./data/",ReportPeriod,"_PROC.csv", sep=""), 
+                  stringsAsFactors=FALSE)
 
 #produce reports
 knitr::knit2html("./R/exampleReport.Rmd")

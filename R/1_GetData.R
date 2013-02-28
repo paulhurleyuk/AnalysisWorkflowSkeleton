@@ -17,4 +17,25 @@ srcdata<-read.csv("./data/cars.csv")
 # Can either write data out to files (include some indication of dates ?) 
 # or write the environment out
 
-write.csv(srcdata, file=paste("./data/",ReportPeriod,"_SRC.csv", sep=""))
+#For this initial process to get the data, try to pull in the old data and compare, 
+#and only write out the data if diffeent
+
+replaceFile=TRUE
+
+if(file.exists(normalizePath(
+  paste("./data/",ReportPeriod,"_SRC.csv", sep=""), 
+  mustWork=FALSE))){
+  olddata<-read.csv(file=normalizePath(
+    paste("./data/",ReportPeriod,"_SRC.csv", sep=""), 
+    mustWork=FALSE))
+  if(length(which(srcdata != olddata))==0){
+    #Files are identical, no need to update
+    replaceFile=FALSE
+  }
+}
+
+if(replaceFile){write.csv(srcdata, 
+                          file=normalizePath(paste("./data/",ReportPeriod,"_SRC.csv", sep=""), 
+                                             mustWork=FALSE), 
+                          row.names=FALSE)
+}
